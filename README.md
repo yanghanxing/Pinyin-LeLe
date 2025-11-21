@@ -2,119 +2,74 @@
 
 ![React](https://img.shields.io/badge/React-19-blue) ![Gemini AI](https://img.shields.io/badge/Google-Gemini%20AI-orange) ![Tailwind CSS](https://img.shields.io/badge/Style-Tailwind-38bdf8) ![License](https://img.shields.io/badge/License-MIT-green)
 
-[中文](#中文介绍) | [English](#english-introduction)
+[**English Documentation**](README_EN.md)
 
 ---
 
-## 🇨🇳 中文介绍
+## 📖 项目介绍
 
 **拼音乐乐** 是一款专为幼儿和小学生设计的互动式拼音学习 Web 应用程序。
 
-我们发现现有的许多浏览器自带语音引擎会将拼音（如 `f` 或 `b`）误读为英文字母（F, B）。本项目通过特殊的代理汉字映射技术和 Google Gemini AI，致力于打造一个**纯正中文语境**的学习环境。
+作为一名拥有丰富经验的语文老师，我深知孩子们在初学拼音时最大的痛点：**容易将拼音字母（如 b, p, f）与英文字母混淆**。市面上许多应用直接调用系统合成音，往往会把 "b" 读成英语的 "bee"。
 
-### ✨ 核心功能
-
-1.  **严谨的拼音分类** 📚
-    *   完整收录 **声母**、**韵母**、**整体认读音节**（按照小学语文标准分类）。
-    *   卡片式设计，色彩鲜艳，符合儿童审美。
-
-2.  **防混淆发音引擎** 🔊
-    *   **拒绝"洋腔洋调"**：解决了浏览器 TTS 将 `f` 读成 `ABC` 中的 `F` 的问题。
-    *   **兜底机制**：对于 `fō` 这种没有对应汉字的读音，系统会自动回退到标准基础音，确保孩子听到的是“拼音”而非“字母”。
-
-3.  **AI 智能私教 (Powered by Gemini)** 🤖
-    *   **AI 老师读**：调用 Gemini 高质量语音模型，生成真人般的教学发音。
-    *   **魔法卡片**：根据拼音形状和示例词（如 `t` 像伞柄），实时生成助记图像，帮助图像记忆。
-    *   **我有问题**：模拟幼儿园 "王老师" 的口吻，用顺口溜和 Emoji 给孩子讲解拼音知识。
-
-4.  **声调练习** 🎵
-    *   直观的声调符号（ˉ ˊ ˇ ˋ）可视化。
-    *   点击声调按钮，主展示区保持不变（避免视觉干扰），声音播放对应的标准音。
-
-### 📸 界面预览 (Screenshots)
-
-*(此处建议放置截图)*
-
-| 首页列表 (Home) | 拼音详情页 (Detail) |
-|:---:|:---:|
-| ![Home Page Placeholder](https://via.placeholder.com/400x300?text=Home+Page+List) <br> *声母、韵母、整体认读音节分类展示* | ![Detail Page Placeholder](https://via.placeholder.com/400x300?text=Detail+Page+Interaction) <br> *声调练习与AI互动功能* |
-
-### 🚀 快速开始
-
-#### 1. 环境准备
-确保你安装了 Node.js。
-
-#### 2. 安装依赖
-```bash
-npm install
-```
-
-#### 3. 配置 API Key
-本项目依赖 Google Gemini API 来实现 AI 语音、绘图和讲解功能。
-请在根目录环境变量或代码中配置 `process.env.API_KEY`。
-
-> **注意**：如果您在本地开发，可以直接在 `services/geminiService.ts` 中临时测试，或者使用 `.env` 文件（需配置构建工具支持）。
-
-#### 4. 启动项目
-```bash
-npm start
-```
+本项目通过特殊的**汉字代理映射技术**和 **Google Gemini AI**，致力于打造一个**纯正中文语境**的学习环境，让学习变得有趣、生动且准确！
 
 ---
 
-## 🇺🇸 English Introduction
+## ✨ 核心亮点
 
-**PinYin Lele** is an interactive Pinyin learning web application tailored for kindergarten and primary school children.
+### 1. 防混淆发音引擎 (Anti-Confusion TTS) 🔊
+*   **拒绝"洋腔洋调"**：系统内置了特殊的映射表（例如将 `b` 映射为汉字 `波`，`p` 映射为 `坡`）。
+*   **原理**：通过欺骗浏览器的语音合成引擎（Web Speech API），强制其按照汉字发音，彻底解决了将 `f` 读成英语 `F` (ABC) 的问题，确保孩子听到的是标准的拼音发音。
 
-It addresses a common issue where browser Text-to-Speech (TTS) engines mispronounce Pinyin letters (like `f` or `b`) as English alphabet letters. This project uses a proxy character mapping technique and Google Gemini AI to ensure a **pure Chinese learning context**.
+### 2. Gemini AI 智能私教 🤖
+集成 Google Gemini 2.5 Flash 模型，提供三大 AI 功能：
+*   **👩‍🏫 AI 老师读**：调用 Gemini 高质量 TTS 模型，生成比浏览器自带语音更自然、更有情感的真人示范读音。
+*   **🎨 魔法卡片**：记不住形状？AI 根据拼音形状和词语实时生成助记插画（例如：`t` 像伞柄朝下），通过图像记忆法加深印象。
+*   **💡 我有问题**：模拟幼儿园 "王老师" 的口吻，用生动的 Emoji 和顺口溜为孩子讲解拼音知识。
 
-### ✨ Key Features
+### 3. 严谨的教学体系 📚
+*   **科学分类**：完整收录 **23个声母**、**24个韵母**、**16个整体认读音节**。
+*   **四声练习**：每个拼音都配备了交互式的四声（ā á ǎ à）练习按钮，并配有声调手势图（平、扬、拐弯、降）。
+*   **顺口溜记忆**：每个拼音都配有经典的教学顺口溜（如：*听广播 b b b，右下半圆 b b b*）。
 
-1.  **Standard Categorization** 📚
-    *   Fully covers **Initials (声母)**, **Finals (韵母)**, and **Whole Syllables (整体认读音节)**.
-    *   Vibrant, card-based UI designed for kids.
-
-2.  **Anti-Confusion Pronunciation Engine** 🔊
-    *   **No English Letters**: Prevents the browser from reading `f` as the English letter "F".
-    *   **Smart Fallback**: For tone combinations without corresponding Hanzi (like `fō`), the system falls back to the base pronunciation to ensure accuracy.
-
-3.  **AI Integration (Powered by Gemini)** 🤖
-    *   **AI Teacher Voice**: Uses Gemini's advanced TTS to generate natural, native-level pronunciations.
-    *   **Magic Cards**: Generates mnemonic images on the fly based on the Pinyin shape (e.g., `t` looks like an umbrella handle).
-    *   **Ask Teacher**: Provides explanations, rhymes, and fun facts in the persona of a kindergarten teacher using simplified Chinese suitable for 5-year-olds.
-
-4.  **Tone Practice** 🎵
-    *   Visual tone marks (Level, Rising, Dipping, Falling).
-    *   Consistent UI: Clicking tone buttons plays the sound while keeping the main character display stable to prevent visual confusion.
-
-### 🛠 Tech Stack
-
-*   **Frontend**: React 19, TypeScript
-*   **Styling**: Tailwind CSS, Custom Animations (Blob effects)
-*   **AI / Backend**: Google GenAI SDK (`@google/genai`)
-*   **Fonts**: M PLUS Rounded 1c (Rounded friendly font), KaiTi (Standard Chinese Calligraphy font)
-
-### 🚀 Getting Started
-
-#### 1. Prerequisites
-Ensure Node.js is installed.
-
-#### 2. Install Dependencies
-```bash
-npm install
-```
-
-#### 3. API Key Configuration
-This project uses Google Gemini API for AI features.
-You need a valid API Key from [Google AI Studio](https://aistudio.google.com/).
-
-#### 4. Run the App
-```bash
-npm start
-```
+### 4. 儿童友好界面 🎈
+*   **柔和配色**：采用马卡龙色系（嫩黄、天蓝、淡粉），保护视力且亲和力强。
+*   **圆角设计**：全站采用圆角字体和圆角卡片，减少视觉锐度。
+*   **流体动画**：背景中有漂浮的变形圆球（Blobs），增加趣味性。
 
 ---
 
-## 📝 License
+## 🛠 使用指南
 
-MIT License. Feel free to use this for educational purposes!
+1.  **选择分类**：在首页顶部切换“声母”、“韵母”或“整体认读音节”。
+2.  **快速听音**：点击列表中的卡片上的小喇叭图标 🔊，快速播放基础发音。
+3.  **进入详情**：点击卡片主体，进入沉浸式学习模式。
+    *   **练四声**：点击四个声调按钮，跟着读。
+    *   **AI 互动**：
+        *   点击 **"AI老师读"** 听真范读。
+        *   点击 **"魔法卡片"** 看 AI 变魔术画图。
+        *   点击 **"我有问题"** 听老师讲故事。
+
+---
+
+## 💻 技术栈
+
+*   **前端框架**: React 19
+*   **样式库**: Tailwind CSS (Custom Config for Kid colors)
+*   **AI 模型**: Google Gemini API (`gemini-2.5-flash`, `gemini-2.5-flash-image`, `gemini-tts`)
+*   **字体**: M PLUS Rounded 1c (圆体), KaiTi (楷体)
+
+---
+
+## 🚀 本地开发
+
+需要配置 Google Gemini API Key。
+
+1.  克隆项目
+2.  安装依赖
+3.  设置环境变量 `API_KEY`
+4.  运行 `npm start`
+
+---
+*Made with ❤️ for the next generation.*
